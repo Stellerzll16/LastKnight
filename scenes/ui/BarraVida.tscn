@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dcmuji73lcblh"]
+
+[ext_resource type="Script" uid="uid://cm2k1htr4su4v" path="res://scenes/ui/BarraVida.gd" id="1_yaipa"]
+
+[node name="BarraVida" type="Node2D" unique_id=1236818296]
+script = ExtResource("1_yaipa")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1508497103]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 19.0
+offset_bottom = -19.5
+value = 100.0
+show_percentage = false

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bdr7ncgs34hcj"]
+
+[ext_resource type="Script" uid="uid://81bb08y1a7ye" path="res://scenes/ui/PantallaPreguntas.gd" id="1_gt7gl"]
+
+[node name="PantallaPreguntas" type="CanvasLayer" unique_id=846468680]
+process_mode = 3
+script = ExtResource("1_gt7gl")
+
+[node name="Panel" type="Panel" parent="." unique_id=551213513]
+custom_minimum_size = Vector2(500, 350)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=983083979]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="LabelCategoria" type="Label" parent="Panel/VBoxContainer" unique_id=1736787151]
+layout_mode = 2
+text = "Matemáticas"
+horizontal_alignment = 1
+
+[node name="LabelPregunta" type="Label" parent="Panel/VBoxContainer" unique_id=365425747]
+layout_mode = 2
+text = "¿Pregunta de ejemplo?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GridOpciones" type="GridContainer" parent="Panel/VBoxContainer" unique_id=1166585424]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="BotonA" type="Button" parent="Panel/VBoxContainer/GridOpciones" unique_id=1198697750]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "A) ....."
+
+[node name="BotonB" type="Button" parent="Panel/VBoxContainer/GridOpciones" unique_id=1854382052]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "B) ....."
+
+[node name="BotonC" type="Button" parent="Panel/VBoxContainer/GridOpciones" unique_id=150421891]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "C) ....."
+
+[node name="BotonD" type="Button" parent="Panel/VBoxContainer/GridOpciones" unique_id=514584922]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "D) ...."
+
+[node name="BarraTiempo" type="ProgressBar" parent="Panel/VBoxContainer" unique_id=1255071094]
+custom_minimum_size = Vector2(460, 20)
+layout_mode = 2
+max_value = 15.0
+value = 15.0
+show_percentage = false

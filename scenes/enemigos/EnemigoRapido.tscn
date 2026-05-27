@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c6qronlesn2e"]
+
+[ext_resource type="PackedScene" uid="uid://dcmuji73lcblh" path="res://scenes/ui/BarraVida.tscn" id="1_cjgr7"]
+[ext_resource type="Script" uid="uid://5pyss5ihvpnm" path="res://scenes/enemigos/EnemigoRapido.gd" id="1_dqgj7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dqgj7"]
+size = Vector2(32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvr06"]
+
+[node name="EnemigoRapido" type="CharacterBody2D" unique_id=1950498871]
+script = ExtResource("1_dqgj7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1837184815]
+modulate = Color(1, 0.4371151, 0.42630386, 1)
+texture = SubResource("PlaceholderTexture2D_dqgj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=796887442]
+shape = SubResource("CapsuleShape2D_xvr06")
+
+[node name="BarraVida" parent="." unique_id=1236818296 instance=ExtResource("1_cjgr7")]

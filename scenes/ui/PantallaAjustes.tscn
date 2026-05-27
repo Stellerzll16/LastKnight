@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cm7aupd24ue6i"]
+
+[ext_resource type="Script" uid="uid://b221bcsc7uncr" path="res://scenes/ui/PantallaAjustes.gd" id="1_ak8ti"]
+
+[node name="PantallaAjustes" type="Control" unique_id=366738275]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ak8ti")
+
+[node name="Panel" type="Panel" parent="." unique_id=214738167]
+custom_minimum_size = Vector2(400, 280)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -140.0
+offset_right = 200.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=2030037001]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -69.5
+offset_right = 75.5
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTitulo" type="Label" parent="Panel/VBox" unique_id=1505420171]
+layout_mode = 2
+text = "Ajustes de audio"
+horizontal_alignment = 1
+
+[node name="FilaMaster" type="HBoxContainer" parent="Panel/VBox" unique_id=1350667014]
+layout_mode = 2
+
+[node name="LabelMaster" type="Label" parent="Panel/VBox/FilaMaster" unique_id=1666526899]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="SliderMaster" type="HSlider" parent="Panel/VBox/FilaMaster" unique_id=1659571030]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="LabelValorMaster" type="Label" parent="Panel/VBox/FilaMaster" unique_id=1209421968]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="FilaMusica" type="HBoxContainer" parent="Panel/VBox" unique_id=1871346934]
+layout_mode = 2
+
+[node name="LabelMusica" type="Label" parent="Panel/VBox/FilaMusica" unique_id=791392242]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Musica"
+
+[node name="SliderMusica" type="HSlider" parent="Panel/VBox/FilaMusica" unique_id=889417616]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="LabelValorMusica" type="Label" parent="Panel/VBox/FilaMusica" unique_id=2027429370]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="FilaEfectos" type="HBoxContainer" parent="Panel/VBox" unique_id=1467583132]
+layout_mode = 2
+
+[node name="LabelEfectos" type="Label" parent="Panel/VBox/FilaEfectos" unique_id=835122692]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Efectos"
+
+[node name="SliderEfectos" type="HSlider" parent="Panel/VBox/FilaEfectos" unique_id=1440452015]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="LabelValorEfectos" type="Label" parent="Panel/VBox/FilaEfectos" unique_id=2040525586]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="BotonCerrar" type="Button" parent="Panel/VBox" unique_id=1460191048]
+layout_mode = 2
+text = "Cerrar"
+
+[connection signal="pressed" from="Panel/VBox/BotonCerrar" to="." method="_on_boton_cerrar_pressed"]

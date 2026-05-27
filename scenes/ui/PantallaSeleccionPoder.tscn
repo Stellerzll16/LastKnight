@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dk7ho3eyejrcj"]
+
+[ext_resource type="Script" uid="uid://cmrgsjsgjdcrl" path="res://scenes/ui/PantallaSeleccionPoder.gd" id="1_gbiuv"]
+
+[node name="PantallaSeleccionPoder" type="CanvasLayer" unique_id=1517277543]
+process_mode = 3
+script = ExtResource("1_gbiuv")
+
+[node name="Panel" type="Panel" parent="." unique_id=476900903]
+custom_minimum_size = Vector2(600, 250)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -125.0
+offset_right = 300.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=798107527]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -88.5
+offset_right = 244.0
+offset_bottom = 88.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTitulo" type="Label" parent="Panel/VBoxContainer" unique_id=39093637]
+layout_mode = 2
+text = "Elige tu poder"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1427688352]
+layout_mode = 2
+
+[node name="Carta1" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1826629117]
+custom_minimum_size = Vector2(160, 150)
+layout_mode = 2
+
+[node name="Carta2" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1388255631]
+custom_minimum_size = Vector2(160, 150)
+layout_mode = 2
+
+[node name="Carta3" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=288907561]
+custom_minimum_size = Vector2(160, 150)
+layout_mode = 2
