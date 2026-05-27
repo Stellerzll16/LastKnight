@@ -239,6 +239,7 @@ func _morir() -> void:
 	var jugador_node = get_tree().get_first_node_in_group("jugador")
 	if jugador_node:
 		jugador_node.agregar_xp(xp_al_morir)
+	EstadoJuego.enemigos_eliminados += 1
 	queue_free()
 
 func congelar(duracion: float) -> void:

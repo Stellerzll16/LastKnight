@@ -24,6 +24,7 @@ var orco_elite_spawneado: bool = false
 @onready var pantalla_preguntas = $PantallaPreguntas
 @onready var pantalla_poderes = $PantallaSeleccionPoder
 @onready var menu_pausa = $MenuPausa
+@onready var pantalla_game_over = $PantallaGameOver
 
 var ventajas = [
 	{"nombre": "🏹 Misil Mágico", "descripcion": "Desbloquea ataque a distancia", "tipo": "disparo", "valor": 1},
@@ -53,7 +54,7 @@ func _ready() -> void:
 	pantalla_poderes.poder_elegido.connect(_on_poder_elegido)
 
 func _on_jugador_murio() -> void:
-	ConfiguracionJuego.borrar_partida()
+	pantalla_game_over.mostrar()
 
 func _process(delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("ui_page_down"):
@@ -177,11 +178,7 @@ func _angulo_a_lado(angulo: float) -> int:
 	else: return 0
 
 func _on_jugador_subio_nivel() -> void:
-	var fase = EstadoJuego.get_fase_actual()
-	var pregunta = GestorPreguntas.obtener_pregunta(fase)
-	if pregunta.is_empty():
-		return
-	pantalla_preguntas.mostrar_pregunta(pregunta)
+	_on_pregunta_respondida(true)
 
 func _on_pregunta_respondida(correcta: bool) -> void:
 	var jugador = get_tree().get_first_node_in_group("jugador")

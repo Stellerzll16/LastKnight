@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dusp7akl72ujd"]
 
-[ext_resource type="Script" uid="uid://deld1x3nrf3ch" path="res://scenes/main/GameManager.gd" id="1_u1xfj"]
+[ext_resource type="Script" uid="uid://bx3hat1e4w5kq" path="res://scenes/main/GameManager.gd" id="1_u1xfj"]
 [ext_resource type="PackedScene" uid="uid://b0nfjcpdy2dfr" path="res://scenes/jugador/Jugador.tscn" id="2_nha0i"]
 [ext_resource type="PackedScene" uid="uid://cm07e55laa7t3" path="res://scenes/enemigos/EnemigoBasico.tscn" id="2_q24mn"]
 [ext_resource type="PackedScene" uid="uid://c6qronlesn2e" path="res://scenes/enemigos/EnemigoRapido.tscn" id="3_ostsq"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://crbak1mmnd0vx" path="res://scenes/enemigos/EnemigoOrcoElite.tscn" id="7_jsdfw"]
 [ext_resource type="PackedScene" uid="uid://bhfkbg7xmdgmr" path="res://scenes/ui/MenuPausa.tscn" id="7_pausa"]
 [ext_resource type="Texture2D" uid="uid://cug2u42ednp2f" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/a89f8e76-3bc9-4733-8bbb-cf618f65da31.jpg" id="13_2tpxt"]
+[ext_resource type="PackedScene" uid="uid://c7pv3p8kbucwo" path="res://scenes/ui/PantallaGameOver.tscn" id="14_jsdfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tpxt"]
 size = Vector2(2048, 22)
@@ -54,6 +55,8 @@ escena_proyectil = null
 [node name="PantallaSeleccionPoder" parent="." unique_id=1517277543 instance=ExtResource("6_sjxhf")]
 
 [node name="MenuPausa" parent="." unique_id=1750189265 instance=ExtResource("7_pausa")]
+
+[node name="PantallaGameOver" parent="." unique_id=351450970 instance=ExtResource("14_jsdfw")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=257101926]
 

@@ -198,13 +198,6 @@ func _process(delta: float) -> void:
 			_arco_activo = false
 			queue_redraw()
 
-func _draw() -> void:
-	if not _arco_activo:
-		return
-	var alpha = 1.0 - (_arco_timer / _arco_duracion)
-	var angulo_base = _arco_direccion.angle()
-	draw_arc(Vector2.ZERO, rango_espada, angulo_base - deg_to_rad(60), angulo_base + deg_to_rad(60), 24, Color(1, 0.9, 0.3, alpha), 3.0)
-
 func aplicar_knockback(origen: Vector2) -> void:
 	knockback_velocidad = (global_position - origen).normalized() * knockback_fuerza
 
@@ -226,6 +219,7 @@ func recibir_danio(cantidad: float, origen: Vector2 = Vector2.ZERO) -> void:
 	if vida <= 0:
 		sprite.play("death")
 		await sprite.animation_finished
+		EventBus.jugador_murio.emit()
 		queue_free()
 
 func agregar_xp(cantidad: float) -> void:
