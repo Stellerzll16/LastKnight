@@ -22,7 +22,7 @@ buses/default_bus_layout="uid://d27lcelbx1nlh"
 [autoload]
 
 EventBus="*uid://d23xyvyyilbl6"
-EstadoJuego="*uid://dvn8qdsrca5dp"
+EstadoJuego="*uid://bjoh0xg3qxo7c"
 GestorPreguntas="*uid://ba0dk3uxxlrjo"
 ConfiguracionJuego="*uid://3x0v1rho53li"
 

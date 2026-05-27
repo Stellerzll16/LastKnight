@@ -261,6 +261,7 @@ shape = SubResource("CapsuleShape2D_j5vqh")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1431004965]
 
 [node name="BarraVida" parent="." unique_id=1236818296 instance=ExtResource("2_j5vqh")]
+position = Vector2(0, -17)
 
 [node name="EscudoVisual" type="Node2D" parent="." unique_id=-293967295]
 script = ExtResource("99_escvis")
