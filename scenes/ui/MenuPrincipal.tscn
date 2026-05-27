@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cllu20kh808n" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/PrincipalMenu/freefantasy.png" id="2_yjva2"]
 [ext_resource type="Texture2D" uid="uid://ftlosaedfu3p" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight/Knight-Idle.png" id="3_jpyp4"]
 [ext_resource type="Texture2D" uid="uid://bo8xqra34bt8m" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/PrincipalMenu/MediavelFree.png" id="3_m3x72"]
+[ext_resource type="AudioStream" uid="uid://4433qjxk4370" path="res://assets/audio/musica/MusicaMenuPrincipal.mp3" id="6_mjub1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjub1"]
 atlas = ExtResource("3_jpyp4")
@@ -120,7 +121,7 @@ position = Vector2(476, 527.00006)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_l22w2")
 animation = &"idle"
-frame_progress = 0.59974796
+frame_progress = 0.6581861
 
 [node name="MaderaParaSostener" type="TextureRect" parent="." unique_id=209295869]
 layout_mode = 0
@@ -191,6 +192,12 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_jvoyh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3cnec")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_rng8x")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0hw50")
+
+[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=41181296]
+stream = ExtResource("6_mjub1")
+volume_db = -22.464
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="TextureRect/BotonJugar" to="." method="_on_boton_jugar_pressed"]
 [connection signal="pressed" from="TextureRect/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
