@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ccf1xiyn2bgsj"]
+
+[ext_resource type="Script" uid="uid://nvr21tvfcgpf" path="res://scenes/armas/Proyectil.gd" id="1_uf8cs"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v448f"]
+size = Vector2(12, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80cnf"]
+radius = 6.0
+
+[node name="Proyectil" type="Area2D" unique_id=10141979]
+script = ExtResource("1_uf8cs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=101941002]
+modulate = Color(0, 0.4869616, 0.48696148, 1)
+texture = SubResource("PlaceholderTexture2D_v448f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1760007852]
+shape = SubResource("CircleShape2D_80cnf")

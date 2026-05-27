@@ -1,0 +1,13 @@
+# Godot
+.godot/
+*.uid
+*.import
+export_presets.cfg
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

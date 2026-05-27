@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dusp7akl72ujd"]
+
+[ext_resource type="Script" uid="uid://bx3hat1e4w5kq" path="res://scenes/main/GameManager.gd" id="1_u1xfj"]
+[ext_resource type="PackedScene" uid="uid://b0nfjcpdy2dfr" path="res://scenes/jugador/Jugador.tscn" id="2_nha0i"]
+[ext_resource type="PackedScene" uid="uid://cm07e55laa7t3" path="res://scenes/enemigos/EnemigoBasico.tscn" id="2_q24mn"]
+[ext_resource type="PackedScene" uid="uid://c6qronlesn2e" path="res://scenes/enemigos/EnemigoRapido.tscn" id="3_ostsq"]
+[ext_resource type="PackedScene" uid="uid://ds1knp5dthn27" path="res://scenes/enemigos/EnemigoTanque.tscn" id="4_3km4f"]
+[ext_resource type="PackedScene" uid="uid://h7h8yrpy82nw" path="res://scenes/ui/HUD.tscn" id="4_gyg6b"]
+[ext_resource type="PackedScene" uid="uid://bdr7ncgs34hcj" path="res://scenes/ui/PantallaPreguntas.tscn" id="5_1rhdn"]
+[ext_resource type="PackedScene" uid="uid://cr4xyq3bl1rud" path="res://scenes/enemigos/EnemigoEspecial.tscn" id="5_qkm1d"]
+[ext_resource type="PackedScene" uid="uid://c2oftfsj6gj4g" path="res://scenes/enemigos/EnemigoOrco.tscn" id="6_2tpxt"]
+[ext_resource type="PackedScene" uid="uid://dk7ho3eyejrcj" path="res://scenes/ui/PantallaSeleccionPoder.tscn" id="6_sjxhf"]
+[ext_resource type="PackedScene" uid="uid://crbak1mmnd0vx" path="res://scenes/enemigos/EnemigoOrcoElite.tscn" id="7_jsdfw"]
+[ext_resource type="PackedScene" uid="uid://bhfkbg7xmdgmr" path="res://scenes/ui/MenuPausa.tscn" id="7_pausa"]
+[ext_resource type="Texture2D" uid="uid://cug2u42ednp2f" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/a89f8e76-3bc9-4733-8bbb-cf618f65da31.jpg" id="13_2tpxt"]
+[ext_resource type="PackedScene" uid="uid://c7pv3p8kbucwo" path="res://scenes/ui/PantallaGameOver.tscn" id="14_jsdfw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tpxt"]
+size = Vector2(2048, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsdfw"]
+size = Vector2(2050, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tck0d"]
+size = Vector2(30, 1335.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8lgh"]
+size = Vector2(26, 1335)
+
+[node name="Main" type="Node2D" unique_id=2045298058]
+script = ExtResource("1_u1xfj")
+escena_enemigo_basico = ExtResource("2_q24mn")
+escena_enemigo_rapido = ExtResource("3_ostsq")
+escena_enemigo_tanque = ExtResource("4_3km4f")
+escena_enemigo_especial = ExtResource("5_qkm1d")
+escena_enemigo_orco = ExtResource("6_2tpxt")
+escena_enemigo_orco_elite = ExtResource("7_jsdfw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1456590857]
+position = Vector2(577, 352.99997)
+scale = Vector2(2.5, 1.409)
+texture = ExtResource("13_2tpxt")
+region_rect = Rect2(0, 0, 3600, 1800)
+
+[node name="Jugador" parent="." unique_id=503175505 instance=ExtResource("2_nha0i")]
+position = Vector2(815, 190)
+escena_satelite = null
+escena_senuelo = null
+escena_proyectil = null
+
+[node name="HUD" parent="." unique_id=100887434 instance=ExtResource("4_gyg6b")]
+
+[node name="PantallaPreguntas" parent="." unique_id=846468680 instance=ExtResource("5_1rhdn")]
+
+[node name="PantallaSeleccionPoder" parent="." unique_id=1517277543 instance=ExtResource("6_sjxhf")]
+
+[node name="MenuPausa" parent="." unique_id=1750189265 instance=ExtResource("7_pausa")]
+
+[node name="PantallaGameOver" parent="." unique_id=351450970 instance=ExtResource("14_jsdfw")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=257101926]
+
+[node name="CollisionShape2DUp" type="CollisionShape2D" parent="StaticBody2D" unique_id=1961045170]
+position = Vector2(574, -9)
+shape = SubResource("RectangleShape2D_2tpxt")
+
+[node name="CollisionShape2D2Down" type="CollisionShape2D" parent="StaticBody2D" unique_id=1253929886]
+position = Vector2(622, 769)
+shape = SubResource("RectangleShape2D_jsdfw")
+
+[node name="CollisionShape2D3Left" type="CollisionShape2D" parent="StaticBody2D" unique_id=1348495571]
+position = Vector2(-79, 402)
+shape = SubResource("RectangleShape2D_tck0d")
+
+[node name="CollisionShape2D4Right" type="CollisionShape2D" parent="StaticBody2D" unique_id=1944096613]
+position = Vector2(1271, 415)
+shape = SubResource("RectangleShape2D_u8lgh")

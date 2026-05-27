@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c7pv3p8kbucwo"]
+
+[ext_resource type="Script" uid="uid://v0yq1o6r3r6c" path="res://scenes/ui/PantallaGameOver.gd" id="1_xv0hj"]
+
+[node name="PantallaGameOver" type="CanvasLayer" unique_id=351450970]
+script = ExtResource("1_xv0hj")
+
+[node name="Panel" type="Panel" parent="." unique_id=1915110231]
+custom_minimum_size = Vector2(500, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2113902937]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -42.5
+offset_right = 62.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="Panel/VBoxContainer" unique_id=95173972]
+layout_mode = 2
+text = "Game Over"
+
+[node name="Stats" type="Label" parent="Panel/VBoxContainer" unique_id=1561805696]
+layout_mode = 2
+text = "Estadisticas"
+
+[node name="VolverAlMenu" type="Button" parent="Panel/VBoxContainer" unique_id=776652396]
+layout_mode = 2
+text = "Volver al menu"

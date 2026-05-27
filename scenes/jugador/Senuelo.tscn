@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dx1bng5al0kth"]
+[ext_resource type="Script" uid="uid://2u7y2x46iyu8" path="res://scenes/jugador/Senuelo.gd" id="1_sen"]
+[ext_resource type="PackedScene" path="res://scenes/ui/BarraVida.tscn" id="2_barra"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y4g5v"]
+[node name="Senuelo" type="CharacterBody2D" unique_id=466740739]
+script = ExtResource("1_sen")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=45866424]
+scale = Vector2(22.029, 22.029)
+texture = SubResource("PlaceholderTexture2D_y4g5v")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85913522]
+[node name="BarraVida" parent="." instance=ExtResource("2_barra")]

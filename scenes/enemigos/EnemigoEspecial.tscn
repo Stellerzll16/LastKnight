@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cr4xyq3bl1rud"]
+
+[ext_resource type="PackedScene" uid="uid://dcmuji73lcblh" path="res://scenes/ui/BarraVida.tscn" id="1_hx5nt"]
+[ext_resource type="Script" uid="uid://dln4itgvhruu4" path="res://scenes/enemigos/EnemigoEspecial.gd" id="1_l3sg5"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l3sg5"]
+size = Vector2(32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmy6u"]
+
+[node name="EnemigoEspecial" type="CharacterBody2D" unique_id=2015209788]
+script = ExtResource("1_l3sg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=536774196]
+modulate = Color(1.2032688e-06, 0.7071891, 0.3255393, 1)
+texture = SubResource("PlaceholderTexture2D_l3sg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=86075354]
+modulate = Color(1.2032688e-06, 0.7071891, 0.3255393, 1)
+shape = SubResource("CapsuleShape2D_pmy6u")
+
+[node name="BarraVida" parent="." unique_id=1236818296 instance=ExtResource("1_hx5nt")]
+modulate = Color(1.2032688e-06, 0.7071891, 0.3255393, 1)

@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://duc164amfyr4f"]
+
+[ext_resource type="Script" uid="uid://curhhcc5sejif" path="res://scenes/ui/MenuPrincipal.gd" id="1_pagko"]
+[ext_resource type="VideoStream" uid="uid://betu12ue1vv1g" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/PrincipalMenu/BackGround.ogv" id="2_slok0"]
+[ext_resource type="Texture2D" uid="uid://cllu20kh808n" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/PrincipalMenu/freefantasy.png" id="2_yjva2"]
+[ext_resource type="Texture2D" uid="uid://ftlosaedfu3p" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight/Knight-Idle.png" id="3_jpyp4"]
+[ext_resource type="Texture2D" uid="uid://bo8xqra34bt8m" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/PrincipalMenu/MediavelFree.png" id="3_m3x72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjub1"]
+atlas = ExtResource("3_jpyp4")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgtx5"]
+atlas = ExtResource("3_jpyp4")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm4bl"]
+atlas = ExtResource("3_jpyp4")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t04uv"]
+atlas = ExtResource("3_jpyp4")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxnwl"]
+atlas = ExtResource("3_jpyp4")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf3d0"]
+atlas = ExtResource("3_jpyp4")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l22w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjub1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgtx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm4bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t04uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxnwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf3d0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpyp4"]
+atlas = ExtResource("3_m3x72")
+region = Rect2(224, 34, 32, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slok0"]
+atlas = ExtResource("2_yjva2")
+region = Rect2(3.6270294, 47.921883, 71.37297, 113.73527)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjva2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slok0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3x72"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jpyp4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mjub1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sgtx5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dm4bl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t04uv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxnwl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pf3d0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l22w2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jvoyh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3cnec"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rng8x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hw50"]
+
+[node name="MenuPrincipal" type="Control" unique_id=1101198999]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pagko")
+
+[node name="BackGround" type="VideoStreamPlayer" parent="." unique_id=1980264591]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_slok0")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Personaje" type="AnimatedSprite2D" parent="." unique_id=201869634]
+position = Vector2(476, 527.00006)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_l22w2")
+animation = &"idle"
+frame_progress = 0.59974796
+
+[node name="MaderaParaSostener" type="TextureRect" parent="." unique_id=209295869]
+layout_mode = 0
+offset_left = 910.6043
+offset_top = 139.0
+offset_right = 1100.6042
+offset_bottom = 169.78064
+rotation = -1.5707964
+texture = SubResource("AtlasTexture_jpyp4")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=888297747]
+custom_minimum_size = Vector2(300, 450)
+layout_mode = 0
+offset_left = 780.0
+offset_top = 107.0
+offset_right = 1080.0
+offset_bottom = 557.0
+texture = SubResource("AtlasTexture_slok0")
+stretch_mode = 4
+
+[node name="BotonJugar" type="Button" parent="TextureRect" unique_id=1449598489]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48200002
+anchor_top = 0.42900002
+anchor_right = 0.48200002
+anchor_bottom = 0.42900002
+offset_left = -79.600006
+offset_top = -26.050003
+offset_right = 79.399994
+offset_bottom = 25.949997
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yjva2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_slok0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_m3x72")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jpyp4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mjub1")
+
+[node name="BotonContinuar" type="Button" parent="TextureRect" unique_id=1564758311]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48200002
+anchor_top = 0.58000004
+anchor_right = 0.48200002
+anchor_bottom = 0.58000004
+offset_left = -79.600006
+offset_top = -26.00003
+offset_right = 79.399994
+offset_bottom = 25.99997
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sgtx5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dm4bl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t04uv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lxnwl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pf3d0")
+
+[node name="BotonSalir" type="Button" parent="TextureRect" unique_id=1879288937]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48200002
+anchor_top = 0.731
+anchor_right = 0.48200002
+anchor_bottom = 0.731
+offset_left = -79.600006
+offset_top = -25.950012
+offset_right = 79.399994
+offset_bottom = 26.049988
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l22w2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jvoyh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3cnec")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rng8x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0hw50")
+
+[connection signal="pressed" from="TextureRect/BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="TextureRect/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
+[connection signal="pressed" from="TextureRect/BotonSalir" to="." method="_on_boton_salir_pressed"]
