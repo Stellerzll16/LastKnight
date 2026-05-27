@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bvuo73w08l6ad" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime with shadows/Slime-Walk.png" id="7_6h1tp"]
 [ext_resource type="AudioStream" uid="uid://v27ov6ai47v8" path="res://assets/audio/sfx/EspadaGolpeandoSlime.wav" id="9_gpx3q"]
 [ext_resource type="AudioStream" uid="uid://b4xcfsydwrqoo" path="res://assets/audio/sfx/SlimeJump.wav" id="10_6h1tp"]
-[ext_resource type="AudioStream" uid="uid://hcarcf1q6i67" path="res://assets/audio/sfx/EspadazoSlimeGrande.mp3" id="11_6h1tp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0ofi"]
 
@@ -325,7 +324,7 @@ shape = SubResource("CapsuleShape2D_m0ofi")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1040198921]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qt4x4")
-animation = &"attack"
+animation = &"attack02"
 
 [node name="SonidoGolpe" type="AudioStreamPlayer2D" parent="." unique_id=887958606]
 stream = ExtResource("9_gpx3q")
@@ -334,8 +333,4 @@ attenuation = 1.0352632
 
 [node name="SonidoCaminar" type="AudioStreamPlayer2D" parent="." unique_id=1790270496]
 stream = ExtResource("10_6h1tp")
-volume_db = -32.514
-
-[node name="SonidoEspadazo" type="AudioStreamPlayer2D" parent="." unique_id=625793316]
-stream = ExtResource("11_6h1tp")
-volume_db = -18.552
+volume_db = -25.58

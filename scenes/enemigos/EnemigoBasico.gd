@@ -10,6 +10,7 @@ var timer_danio: float = 0.0
 var cadencia_danio: float = 1.0
 var rango_ataque: float = 32.0
 var knockback_ataque: float = 0.0
+var delay_sonido: float = 0.0
 var delay_impacto: float = 0.18
 
 var empuje: Vector2 = Vector2.ZERO
@@ -32,6 +33,9 @@ var animacion_ataque: String = "attack"
 
 @onready var barra_vida = $BarraVida
 @onready var sprite = $Sprite
+@onready var sonido_golpe = $SonidoGolpe
+@onready var sonido_caminar = $SonidoCaminar
+@onready var sonido_espadazo = $SonidoEspadazo
 
 func _ready() -> void:
 	add_to_group("enemigos")
@@ -54,7 +58,8 @@ func hacer_grande() -> void:
 	xp_al_morir *= 2.0
 	rango_ataque = 100.0
 	knockback_ataque = 600.0
-	delay_impacto = 0.45
+	delay_impacto = 0.2
+	delay_sonido = 0.0
 	scale = Vector2(1.6, 1.6)
 
 func _physics_process(delta: float) -> void:
@@ -123,6 +128,14 @@ func _play_base(anim: String) -> void:
 	if _en_hurt or _atacando:
 		return
 	sprite.play(anim)
+	if anim == "walk":
+		var slimes_sonando = get_tree().get_nodes_in_group("enemigos").filter(
+			func(e): return e.has_node("SonidoCaminar") and e.get_node("SonidoCaminar").playing
+		).size()
+		if not sonido_caminar.playing and slimes_sonando < 3:
+			sonido_caminar.play()
+	else:
+		sonido_caminar.stop()
 
 func _atacar() -> void:
 	if _atacando or _en_hurt:
@@ -133,6 +146,9 @@ func _atacar() -> void:
 	sprite.play(animacion_ataque)
 
 	await get_tree().create_timer(delay_impacto).timeout
+
+	if es_grande:
+		sonido_espadazo.play()
 
 	if not _muriendo and not _ataque_cancelado and jugador != null:
 		var distancia = global_position.distance_to(jugador.global_position)
@@ -153,6 +169,11 @@ func recibir_danio(cantidad: float) -> void:
 	if _muriendo:
 		return
 	vida -= cantidad
+	var golpes_sonando = get_tree().get_nodes_in_group("enemigos").filter(
+		func(e): return e.has_node("SonidoGolpe") and e.get_node("SonidoGolpe").playing
+	).size()
+	if golpes_sonando < 2:
+		sonido_golpe.play()
 	barra_vida.actualizar(vida, vida_maxima)
 	if vida <= 0:
 		_morir()
@@ -172,6 +193,7 @@ func _morir() -> void:
 	_en_hurt = false
 	_atacando = false
 	_ataque_cancelado = true
+	sonido_caminar.stop()
 	velocity = Vector2.ZERO
 	sprite.speed_scale = 1.0
 	sprite.play("death")

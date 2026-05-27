@@ -62,14 +62,17 @@ var _en_hurt: bool = false
 @export var escena_proyectil: PackedScene
 @onready var barra_vida = $BarraVida
 @onready var escudo_visual = $EscudoVisual
-@onready var sprite = $Sprite  # AnimatedSprite2D
+@onready var sprite = $Sprite
+@onready var sonido_espada = $SonidoEspada
+@onready var sonido_pasos = $SonidoPasos
+@onready var sonido_danio = $SonidoDanio
+@onready var sonido_muerte = $SonidoMuerte
 
 func _ready() -> void:
 	add_to_group("jugador")
 	sprite.animation_finished.connect(_on_animacion_terminada)
 
 func _on_animacion_terminada() -> void:
-	# Cuando termina attack o hurt, volvemos al estado normal
 	if sprite.animation in ["attack", "hurt"]:
 		_en_ataque = false
 		_en_hurt = false
@@ -106,16 +109,17 @@ func _mover(delta: float) -> void:
 		velocity = direccion * VELOCIDAD
 	move_and_slide()
 
-	# Voltear sprite segun posicion del mouse
 	var mouse_pos = get_global_mouse_position()
 	sprite.flip_h = mouse_pos.x < global_position.x
 
-	# Animacion de movimiento (solo si no hay attack/hurt en curso)
 	if not _en_ataque and not _en_hurt:
 		if velocity.length() > 10.0:
 			sprite.play("walk")
+			if not sonido_pasos.playing:
+				sonido_pasos.play()
 		else:
 			sprite.play("idle")
+			sonido_pasos.stop()
 
 func _atacar(delta: float) -> void:
 	timer_ataque += delta
@@ -129,7 +133,6 @@ func _atacar(delta: float) -> void:
 		return
 	timer_ataque = 0.0
 
-	# Buscar enemigo mas cercano
 	var enemigos = get_tree().get_nodes_in_group("enemigos")
 	var mas_cercano = null
 	var dist_min = INF
@@ -139,18 +142,15 @@ func _atacar(delta: float) -> void:
 			dist_min = d
 			mas_cercano = e
 
-	# Si hay enemigos dentro del rango de espada -> espadazo en area
 	if mas_cercano != null and dist_min <= rango_espada:
 		_espadazo()
 	elif disparo_nivel >= 1 and mas_cercano != null and escena_proyectil != null:
-		# Enemigo lejos y tiene poder de disparo -> proyectil
 		var pos_mouse = get_global_mouse_position()
 		var direccion = (pos_mouse - global_position).normalized()
 		var proyectil = escena_proyectil.instantiate()
 		get_tree().current_scene.add_child(proyectil)
 		proyectil.inicializar(global_position, direccion, danio_ataque, penetracion_completos, penetracion_parcial)
 	else:
-		# Sin enemigos cerca ni disparo disponible -> espadazo en el aire
 		_espadazo()
 
 func _espadazo() -> void:
@@ -160,13 +160,11 @@ func _espadazo() -> void:
 	var pos_mouse = get_global_mouse_position()
 	var dir_mouse = (pos_mouse - global_position).normalized()
 
-	# Esperar al frame de impacto de la animacion antes de aplicar daño
 	await get_tree().create_timer(0.15).timeout
 
-	# Mostrar arco en el momento del impacto
+	sonido_espada.play()
 	_mostrar_arco_espada(dir_mouse)
 
-	# Aplicar daño en el frame de impacto
 	var enemigos = get_tree().get_nodes_in_group("enemigos")
 	for e in enemigos:
 		var dist = global_position.distance_to(e.global_position)
@@ -217,13 +215,15 @@ func recibir_danio(cantidad: float, origen: Vector2 = Vector2.ZERO) -> void:
 	if origen != Vector2.ZERO:
 		knockback_velocidad = (global_position - origen).normalized() * knockback_fuerza
 
-	# Animacion de daño
 	_en_hurt = true
 	_en_ataque = false
+	sonido_pasos.stop()
+	sonido_danio.play()
 	sprite.play("hurt")
 
 	barra_vida.actualizar(vida, vida_maxima)
 	if vida <= 0:
+		sonido_muerte.play()
 		sprite.play("death")
 		await sprite.animation_finished
 		queue_free()
@@ -248,14 +248,12 @@ func escudo_absorber_golpe() -> bool:
 
 	escudo_golpes_actual -= 1
 
-	# Efecto de empuje en Nv.2+
 	if escudo_nivel >= 2:
 		_escudo_empujar_enemigos(false)
 
 	if escudo_golpes_actual <= 0:
 		escudo_roto = true
 		escudo_timer = escudo_cooldown_roto
-		# Efecto de ruptura en Nv.3+
 		if escudo_nivel >= 3:
 			_escudo_empujar_enemigos(true)
 	else:
@@ -271,7 +269,6 @@ func _escudo_empujar_enemigos(ruptura: bool) -> void:
 			var direccion = (enemigo.global_position - global_position).normalized()
 			if ruptura:
 				enemigo.recibir_danio(escudo_danio_ruptura)
-			# Aplicar knockback al enemigo
 			if enemigo.has_method("recibir_empuje"):
 				enemigo.recibir_empuje(direccion * 500.0)
 
@@ -300,7 +297,6 @@ func _invocar_senuelo() -> void:
 	get_tree().current_scene.add_child(s)
 	s.tree_exited.connect(_on_senuelo_muerto)
 
-	# Impulso al jugador
 	var dir = velocity.normalized() if velocity.length() > 10.0 else Vector2(randf_range(-1,1), randf_range(-1,1)).normalized()
 	knockback_velocidad = dir * 900.0
 	senuelo_invulnerable = 0.5
@@ -360,7 +356,6 @@ func _lanzar_meteorito() -> void:
 	var enemigos = get_tree().get_nodes_in_group("enemigos")
 	if enemigos.is_empty():
 		return
-	# Buscar posicion con mas enemigos
 	var mejor_pos = global_position
 	var mejor_conteo = 0
 	for e in enemigos:

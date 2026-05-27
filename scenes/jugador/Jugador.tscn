@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://gj4ho5w4kyp7" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight with shadows/Knight-Hurt.png" id="9_jbfsu"]
 [ext_resource type="Texture2D" uid="uid://wk283ob5uubt" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight with shadows/Knight-Idle.png" id="10_2nbxk"]
 [ext_resource type="Texture2D" uid="uid://ku71n6scjgic" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight with shadows/Knight-Walk.png" id="11_7ydmx"]
+[ext_resource type="AudioStream" uid="uid://ufh28qwgceon" path="res://assets/audio/sfx/Espada.mp3" id="12_jwfet"]
+[ext_resource type="AudioStream" uid="uid://dpgo1gaerj0a5" path="res://assets/audio/sfx/PasosCaballero.mp3" id="13_2nbxk"]
+[ext_resource type="AudioStream" uid="uid://coelb7dyihull" path="res://assets/audio/sfx/SonidoDañoCaballero.mp3" id="14_7ydmx"]
+[ext_resource type="AudioStream" uid="uid://chipm8kjkfc2k" path="res://assets/audio/sfx/SonidoMuerteCaballero.mp3" id="15_7ydmx"]
 [ext_resource type="Script" uid="uid://c2xsps01uadr" path="res://scenes/jugador/EscudoVisual.gd" id="99_escvis"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j5vqh"]
@@ -267,3 +271,16 @@ sprite_frames = SubResource("SpriteFrames_ldisp")
 animation = &"attack"
 frame = 6
 frame_progress = 1.0
+
+[node name="SonidoEspada" type="AudioStreamPlayer2D" parent="." unique_id=1210049356]
+stream = ExtResource("12_jwfet")
+
+[node name="SonidoPasos" type="AudioStreamPlayer2D" parent="." unique_id=1871220655]
+stream = ExtResource("13_2nbxk")
+volume_db = -19.413
+
+[node name="SonidoDanio" type="AudioStreamPlayer2D" parent="." unique_id=648456260]
+stream = ExtResource("14_7ydmx")
+
+[node name="SonidoMuerte" type="AudioStreamPlayer2D" parent="." unique_id=1501625660]
+stream = ExtResource("15_7ydmx")
